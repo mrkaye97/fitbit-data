@@ -32,8 +32,8 @@ All date parameters for each method defaults to the previous day. All methods (e
 
 This project **not** runnable or useful (unless you want my Fitbit data) without registering an application with the Fitbit API and getting your own client ID and secret. Steps to get set up:
 
-- First, [**go here**](https://towardsdatascience.com/collect-your-own-fitbit-data-with-python-ff145fa10873) and follow the instructions to authorize yourself to use the API.
-- **SAVE YOUR CLIENT ID AND CLIENT SECRET!** You'll need them in the next step.
-- Then, in data_pull.py, change the database parameters (username, ip, name) to whatever mySQL database you want to use for storing the data. Keep in mind that the tables in the database **MUST** have the same names as mine.
-- Change the CLIENT_ID and CLIENT_SECRET to your newly saved ones (from when you authorized yourself with the API)
-- Give it a test run!
+1. First, [**go here**](https://towardsdatascience.com/collect-your-own-fitbit-data-with-python-ff145fa10873) and follow the instructions to authorize yourself to use the API.
+2. **SAVE YOUR CLIENT ID AND CLIENT SECRET!** You'll need them in the next step.
+3. Then, in data_pull.py, change the database parameters (username, ip, name) to whatever mySQL database you want to use for storing the data. Keep in mind that the tables in the database **MUST** have the same names as mine.
+4. Change the CLIENT_ID and CLIENT_SECRET to your newly saved ones (from when you authorized yourself with the API)
+5. Give it a test run!
