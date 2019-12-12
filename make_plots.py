@@ -1,7 +1,10 @@
 import pandas as pd
 from sqlalchemy import create_engine
-from matplotlib import pyplot
+from matplotlib import pyplot, axes
+from matplotlib.dates import HourLocator
 import sys
+import datetime
+import time
 
 database_username = 'root'
 database_password = sys.argv[1]
@@ -24,11 +27,14 @@ ts = (df
       .set_index('datetime')
       )
 
-ts = (ts
-      .groupby([ts.index.date, ts.index.hour])
-      .mean()
-      )
-
 pyplot.style.use('ggplot')
 ts.plot(linewidth = .9, alpha = .5)
 pyplot.show()
+
+
+df = (pd
+      .read_sql_table('sleep', con=engine)
+      .assign(date=lambda x: x.date.dt.date)
+      .query("mainSleep==1")
+      .set_index('date')
+      )
