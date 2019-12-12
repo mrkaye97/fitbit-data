@@ -5,8 +5,9 @@ https://python-fitbit.readthedocs.io/en/latest/
 
 ## Description:
 
-This repository contains two python files, data_pull.py and make_plots.py. data_pull.py hooks into the Fitbit API (with a given client ID and secret) and pulls Fitbit statistics. Methods outlined below:
+This repository contains two python files, data_pull.py and make_plots.py. data_pull.py hooks into the Fitbit API (with a given client ID and secret) and pulls Fitbit statistics. 
 
+## Methods:
 
 **hr()** for minute-by-minute heart rate data, given a date
 
@@ -25,6 +26,14 @@ This repository contains two python files, data_pull.py and make_plots.py. data_
 **daterange()** is a helper method to yield a range of dates (analogous to the range() function, but for dates)
 
 
-
 All date parameters for each method defaults to the previous day. All methods (except for daterange() and date_check()) do not return. If date_check() returns -1, then the method that called it returns None and nothing is uploaded to the SQL database. Otherwise, new rows are appended to a SQL table in database fitbit with the specified name.
 
+## Setup and Use:
+
+This project **not** runnable or useful (unless you want my Fitbit data) without registering an application with the Fitbit API and getting your own client ID and secret. Steps to get set up:
+
+- First, [**go here**](https://towardsdatascience.com/collect-your-own-fitbit-data-with-python-ff145fa10873) and follow the instructions to authorize yourself to use the API.
+- **SAVE YOUR CLIENT ID AND CLIENT SECRET!** You'll need them in the next step.
+- Then, in data_pull.py, change the database parameters (username, ip, name) to whatever mySQL database you want to use for storing the data. Keep in mind that the tables in the database **MUST** have the same names as mine.
+- Change the CLIENT_ID and CLIENT_SECRET to your newly saved ones (from when you authorized yourself with the API)
+- Give it a test run!
