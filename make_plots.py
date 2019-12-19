@@ -1,10 +1,8 @@
 import pandas as pd
 from sqlalchemy import create_engine
-from matplotlib import pyplot, axes
-from matplotlib.dates import HourLocator
+from matplotlib import pyplot as plt
+import matplotlib.dates as mdates
 import sys
-import datetime
-import time
 
 database_username = 'root'
 database_password = sys.argv[1]
@@ -20,21 +18,33 @@ engine = create_engine('mysql+pymysql://{}:{}@{}/{}'.format(database_username,
 df = (pd
       .read_sql_table('heartrate', con=engine)
       .assign(datetime=lambda x: pd.to_datetime(x.date.apply(str) + ' ' + x.time.apply(str)))
-      .filter(['datetime', 'hr'])
+      .sort_values(by='datetime')
+      .assign(day=lambda x: x.datetime.dt.date,
+              daymean=lambda x: x.hr.rolling(1440).mean())
+      .filter(['datetime', 'hr', 'daymean'])
       )
 
-ts = (df
-      .set_index('datetime')
-      )
-
-pyplot.style.use('ggplot')
-ts.plot(linewidth = .9, alpha = .5)
-pyplot.show()
-
+plt.style.use('ggplot')
+fig, ax = plt.subplots()
+ax.plot(df.datetime, df.hr, alpha = .2)
+ax.plot(df.datetime, df.daymean)
+#ax.set_xticks(df.datetime)
+ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y-%m"))
+ax.xaxis.set_minor_formatter(mdates.DateFormatter("%Y-%m"))
+_=plt.xticks(rotation=90)
+plt.show()
 
 df = (pd
       .read_sql_table('sleep', con=engine)
-      .assign(date=lambda x: x.date.dt.date)
-      .query("mainSleep==1")
-      .set_index('date')
+      .filter(items=['date', 'minutesAsleep', 'minutesAwake', 'restlessCount', 'awakenings', 'restlessDuration', 'timeInBed'])
+      .groupby('date')
+      .sum()
+      .assign(rollmean=lambda x: x.minutesAsleep.rolling(2).mean())
       )
+
+fig, ax = plt.subplots()
+ax.plot(df.index, df.minutesAsleep)
+ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y-%m"))
+ax.xaxis.set_minor_formatter(mdates.DateFormatter("%Y-%m"))
+_=plt.xticks(rotation=90)
+plt.show()

@@ -14,11 +14,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data_pull.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="184" column="13" lean-forward="true" selection-start-line="184" selection-start-column="13" selection-end-line="184" selection-end-column="13" />
+            <state relative-caret-position="110">
+              <caret line="165" column="19" lean-forward="true" selection-start-line="165" selection-start-column="19" selection-end-line="165" selection-end-column="19" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -26,20 +26,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/codecs.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="311" selection-start-line="311" selection-end-line="311" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/make_plots.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="579">
-              <caret line="40" selection-start-line="40" selection-end-line="40" />
+            <state relative-caret-position="222">
+              <caret line="32" selection-start-line="32" selection-end-line="32" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -74,6 +65,7 @@
       <find>fit_statsSum</find>
       <find>strp</find>
       <find>set</find>
+      <find>fitbit</find>
     </findStrings>
     <replaceStrings>
       <replace>sleep</replace>
@@ -94,8 +86,8 @@
         <option value="$PROJECT_DIR$/create_cron.py" />
         <option value="$PROJECT_DIR$/hello.py" />
         <option value="$PROJECT_DIR$/python-fitbit-master/fitbit/api.py" />
-        <option value="$PROJECT_DIR$/make_plots.py" />
         <option value="$PROJECT_DIR$/data_pull.py" />
+        <option value="$PROJECT_DIR$/make_plots.py" />
       </list>
     </option>
   </component>
@@ -109,6 +101,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -125,7 +118,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -164,7 +156,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.data_pull">
+  <component name="RunManager" selected="Python.make_plots">
     <configuration name="create_cron" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="fitbit" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -187,7 +179,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="data_pull" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="data_pull" type="PythonConfigurationType" factoryName="Python">
       <module name="fitbit" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -201,7 +193,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data_pull.py" />
-      <option name="PARAMETERS" value="1997SQLmrk!" />
+      <option name="PARAMETERS" value="--p 1997SQLmrk! --m fill --s 2019-12-02" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -261,7 +253,6 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.data_pull" />
         <item itemvalue="Python.make_plots" />
         <item itemvalue="Python.create_cron" />
         <item itemvalue="Python.hello" />
@@ -289,19 +280,22 @@
       <workItem from="1575876988866" duration="1290000" />
       <workItem from="1575913793419" duration="5058000" />
       <workItem from="1575975933823" duration="7420000" />
-      <workItem from="1576089049529" duration="3630000" />
+      <workItem from="1576089049529" duration="4671000" />
+      <workItem from="1576511712510" duration="1157000" />
+      <workItem from="1576684630285" duration="607000" />
+      <workItem from="1576772380970" duration="2940000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41669000" />
+    <option name="totallyTimeSpent" value="47414000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.28898427" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.3018598" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" order="0" />
       <window_info anchor="bottom" id="Terminal" order="1" weight="0.32941177" />
@@ -311,14 +305,14 @@
       <window_info anchor="bottom" id="Docker" order="5" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="6" />
       <window_info anchor="bottom" id="Find" order="7" weight="0.32941177" />
-      <window_info active="true" anchor="bottom" id="Run" order="8" visible="true" weight="0.048366014" />
-      <window_info anchor="bottom" id="Debug" order="9" weight="0.4" />
+      <window_info active="true" anchor="bottom" id="Run" order="8" visible="true" weight="0.2379085" />
+      <window_info anchor="bottom" id="Debug" order="9" weight="0.40261438" />
       <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="12" />
       <window_info anchor="right" id="R Graphics" order="0" />
       <window_info anchor="right" id="R Packages" order="1" />
-      <window_info anchor="right" id="SciView" order="2" weight="0.34549356" />
+      <window_info anchor="right" id="SciView" order="2" weight="0.56008583" />
       <window_info anchor="right" id="Commander" order="3" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="4" weight="0.25" />
       <window_info anchor="right" id="Database" order="5" />
@@ -341,16 +335,6 @@
           <line>127</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/data_pull.py</url>
-          <line>28</line>
-          <option name="timeStamp" value="49" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/data_pull.py</url>
-          <line>133</line>
-          <option name="timeStamp" value="50" />
-        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -364,12 +348,34 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/fitbit$hello.coverage" NAME="hello Coverage Results" MODIFIED="1575405393709" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/fitbit$fitbit.coverage" NAME="data_pull Coverage Results" MODIFIED="1575409084550" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/fitbit$make_plots.coverage" NAME="make_plots Coverage Results" MODIFIED="1575989088132" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/fitbit$data_pull.coverage" NAME="data_pull Coverage Results" MODIFIED="1576138503981" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/fitbit$make_plots.coverage" NAME="make_plots Coverage Results" MODIFIED="1576789763991" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/fitbit$data_pull.coverage" NAME="data_pull Coverage Results" MODIFIED="1576774052135" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/fitbit$create_cron.coverage" NAME="create_cron Coverage Results" MODIFIED="1575405814210" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
+      <expression>
+        <expression-string>for x in auth2_client.sleep(date=date)['sleep']:
+    (pd
+     .DataFrame({'date': pd.to_datetime(x['dateOfSleep']).date(),
+                 'mainSleep': x['isMainSleep'],
+                 'startTime': x['startTime'],
+                 'endTime': x['endTime'],
+                 'minutesAsleep': x['minutesAsleep'],
+                 'minutesAwake': x['minutesAwake'],
+                 'awakenings': x['awakeCount'],
+                 'restlessCount': x['restlessCount'],
+                 'restlessDuration': x['restlessDuration'],
+                 'timeInBed': x['timeInBed']
+                 }, index=[0])
+     .to_sql('sleep',
+             con=engine,
+             if_exists='append',
+             index=False)
+     )</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>datetime.datetime.now() - datetime.timedelta(days=1)</expression-string>
         <language-id>Python</language-id>
@@ -425,68 +431,50 @@ ax.yaxis.set_major_locator(HourLocator())</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
-      <expression>
-        <expression-string>fig, ax = pyplot.subplots()
-ax.plot(df.index, df['startTime'])
-ax.legend(['start time', 'end time'])
-ax.yaxis.set_major_locator(HourLocator())
-ax.show()</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>fig, ax = pyplot.subplots()
-ax.plot(df.index, df['startTime'])
-pyplot.legend(['start time', 'end time'])
-ax.yaxis.set_major_locator(HourLocator())
-pyplot.show()</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
     </expressions>
     <expressions id="evaluateExpression">
       <expression>
-        <expression-string>date in set(temp['date'].dt.date)</expression-string>
+        <expression-string>auth2_client.sleep(date=date)['sleep']</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>(datetime.datetime.now() - datetime.timedelta(days=1)).date()</expression-string>
+        <expression-string>x = auth2_client.sleep(date=date)['sleep'][0]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>datetime.datetime.now() - datetime.timedelta(days=1)</expression-string>
+        <expression-string>date = datetime.datetime.strptime('2019-12-16', '%Y-%m-%d').date()</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>datetime.datetime.now() - datetime.timedelta(days=1).date()</expression-string>
+        <expression-string>date = datetime.datetime.strptime('2019-12-18', '%Y-%m-%d').date()</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>(datetime.datetime.now() - datetime.timedelta(days=1)).strftime(&quot;%Y-%m-%d&quot;)</expression-string>
+        <expression-string>date = datetime.datetime.strptime('2019-12-18', '%Y-%m-%d')</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>set(temp['date'].dt.date)</expression-string>
+        <expression-string>date = datetime.datetime.strftime('2019-12-18', '%Y-%m-%d')</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>date</expression-string>
+        <expression-string>date = '2019-12-18'</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>set([date for date in daterange(start, end)])</expression-string>
+        <expression-string>datetime.datetime.strptime(args.s, '%Y-%m-%d').date()</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>datetime.datetime.strptime(yesterday, &quot;%Y-%m-%d&quot;)</expression-string>
+        <expression-string>datetime.datetime.strptime(args.s, '%Y-%m-%d')</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -616,29 +604,29 @@ pyplot.show()</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/make_plots.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="579">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/codecs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
+        <state relative-caret-position="663">
           <caret line="311" selection-start-line="311" selection-end-line="311" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/data_pull.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="184" column="13" lean-forward="true" selection-start-line="184" selection-start-column="13" selection-end-line="184" selection-end-column="13" />
+        <state relative-caret-position="110">
+          <caret line="165" column="19" lean-forward="true" selection-start-line="165" selection-start-column="19" selection-end-line="165" selection-end-column="19" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/make_plots.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>

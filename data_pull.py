@@ -6,9 +6,21 @@ from sqlalchemy import create_engine
 import sys
 import time
 import numpy as np
+import argparse
+
+yesterday = (datetime.datetime.now() - datetime.timedelta(days=1)).date()
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--p", type=str, help="enter SQL password",
+                    nargs='?', default=0, const=0)
+parser.add_argument("--m", type=str, help='upload date range up to yesterday',
+                    nargs='?', default=None, const=None)
+parser.add_argument("--s", type=str, help='set start date',
+                    nargs='?', default=yesterday, const=yesterday)
+args = parser.parse_args()
 
 database_username = 'root'
-database_password = sys.argv[1]  # db password as command line arg
+database_password = args.p  # db password as command line arg
 database_ip = 'localhost:3306'
 database_name = 'fitbit'
 
@@ -20,7 +32,6 @@ engine = create_engine('mysql+pymysql://{}:{}@{}/{}'.format(database_username,
 
 CLIENT_ID = "22B8T7"
 CLIENT_SECRET = "05645289a684308b40e5cef4a002223e"
-yesterday = (datetime.datetime.now() - datetime.timedelta(days=1)).date()
 
 def hr(date = yesterday):
     if date_check('heartrate', date) == -1:
@@ -45,25 +56,25 @@ def sleep(date=yesterday):
         return None
 
     try:
-        x = auth2_client.sleep(date=date)['sleep'][0]
+        for x in auth2_client.sleep(date=date)['sleep']:
 
-        (pd
-         .DataFrame({'date': pd.to_datetime(x['dateOfSleep']).date(),
-                     'mainSleep': x['isMainSleep'],
-                     'startTime': x['startTime'],
-                     'endTime': x['endTime'],
-                     'minutesAsleep': x['minutesAsleep'],
-                     'minutesAwake': x['minutesAwake'],
-                     'awakenings': x['awakeCount'],
-                     'restlessCount': x['restlessCount'],
-                     'restlessDuration': x['restlessDuration'],
-                     'timeInBed': x['timeInBed']
-                     }, index=[0])
-         .to_sql('sleep',
-                 con=engine,
-                 if_exists='append',
-                 index=False)
-         )
+            (pd
+             .DataFrame({'date': pd.to_datetime(x['dateOfSleep']).date(),
+                         'mainSleep': x['isMainSleep'],
+                         'startTime': x['startTime'],
+                         'endTime': x['endTime'],
+                         'minutesAsleep': x['minutesAsleep'],
+                         'minutesAwake': x['minutesAwake'],
+                         'awakenings': x['awakeCount'],
+                         'restlessCount': x['restlessCount'],
+                         'restlessDuration': x['restlessDuration'],
+                         'timeInBed': x['timeInBed']
+                         }, index=[0])
+             .to_sql('sleep',
+                     con=engine,
+                     if_exists='append',
+                     index=False)
+             )
 
     except:
         pass
@@ -142,7 +153,7 @@ def date_check(tab, date):
 
 
 def fill_missing_dates():
-    start = datetime.datetime.strptime("2019-12-08", "%Y-%m-%d").date()
+    start = datetime.datetime.strptime(args.s, '%Y-%m-%d').date()
     end = yesterday
 
     all_dates = np.unique([date for date in daterange(start, end)])
@@ -177,9 +188,12 @@ if __name__ == '__main__':
                                  access_token=ACCESS_TOKEN,
                                  refresh_token=REFRESH_TOKEN)
 
-    #fill_missing_dates()
-    sleep()
-    hr()
-    water()
-    basicactivity()
-    hrzones()
+    if args.m == 'fill':
+        fill_missing_dates()
+
+    else:
+        sleep()
+        hr()
+        water()
+        basicactivity()
+        hrzones()
