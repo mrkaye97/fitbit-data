@@ -36,4 +36,10 @@ This project **not** runnable or useful (unless you want my Fitbit data) without
 2. **SAVE YOUR CLIENT ID AND CLIENT SECRET!** You'll need them in the next step.
 3. Then, in data_pull.py, change the database parameters (username, ip, name) to whatever mySQL database you want to use for storing the data. Keep in mind that the tables in the database **MUST** have the same names as mine.
 4. Change the CLIENT_ID and CLIENT_SECRET to your newly saved ones (from when you authorized yourself with the API)
-5. Run data_pull.py 'YOUR_MYSQL_PASSWORD' and give it a test run!
+5. Run data_pull.py and give it a test run!
+
+## Command Line Arguments:
+
+--p YOUR_MYSQL_PASSWORD (mandatory)
+--m (defaults to yesterday, specifying "fill" will allow you to fill a range of dates from a set start date to yesterday)
+--s (start date for fill in format %Y-%m-%d without quotation marks. Does not do anything if --m fill is not set.)
