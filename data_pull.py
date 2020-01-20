@@ -68,7 +68,8 @@ def sleep(date=yesterday):
                          'awakenings': x['awakeCount'],
                          'restlessCount': x['restlessCount'],
                          'restlessDuration': x['restlessDuration'],
-                         'timeInBed': x['timeInBed']
+                         'timeInBed': x['timeInBed'],
+                         'efficiency': x['efficiency']
                          }, index=[0])
              .to_sql('sleep',
                      con=engine,
@@ -137,7 +138,7 @@ def hrzones(date=yesterday):
 
 
 def daterange(start_date, end_date):
-    for n in range(int((end_date - start_date).days)):
+    for n in range(int((end_date - start_date).days) + 1):
         yield start_date + datetime.timedelta(n)
 
 

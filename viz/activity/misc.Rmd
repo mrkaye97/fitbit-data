@@ -1,0 +1,60 @@
+---
+title: "Activity"
+output:
+  html_document:
+    df_print: paged
+---
+```{r, echo = F}
+knitr::opts_chunk$set(message = F, warning = F, tidy = T)
+```
+
+
+```{r setup, warning = F, message = F}
+library(tidyverse)
+library(dbplyr)
+library(lubridate)
+library(scales)
+library(ggthemes)
+library(forecast)
+```
+
+
+
+```{r connect}
+con <- DBI::dbConnect(RMySQL::MySQL(),    
+                      host = "localhost",   
+                      port = 3306,   
+                      dbname = "fitbit",   
+                      user = "root",   
+                      password = keyring::key_get('mysql'))
+
+```
+
+
+```{r wrangle}
+activity <- tbl(con, 'basicactivity') %>%
+  data.frame() %>%
+  arrange(date) 
+
+water <- tbl(con, 'water') %>%
+  data.frame() %>%
+  arrange(date) 
+
+sleep <- tbl(con, 'sleep') %>%
+  data.frame() %>%
+  arrange(date) 
+
+df <- activity %>%
+  left_join(water, by = 'date') %>%
+  left_join(sleep, by = 'date')
+```
+
+```{r plots}
+df %>%
+  filter(mainSleep == '1') %>%
+  ggplot(aes(x = sedentaryMinutes, y = awakenings))+
+  geom_point()+
+  geom_smooth(method = 'lm', se = F)
+
+```
+
