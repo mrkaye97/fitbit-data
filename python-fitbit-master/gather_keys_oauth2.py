@@ -15,8 +15,8 @@ class OAuth2Server:
                  redirect_uri='http://127.0.0.1:8080/'):
         """ Initialize the FitbitOauth2Client """
         self.success_html = """
-            <h1>You are now authorized to access the Fitbit API!</h1>
-            <br/><h3>You can close this window</h3>"""
+                   <script>window.close();</script>
+                   """
         self.failure_html = """
             <h1>ERROR: %s</h1><br/><h3>You can close this window</h3>%s"""
 

@@ -1,9 +1,9 @@
+import sys
 import fitbit
 import gather_keys_oauth2 as Oauth2
 import pandas as pd
 import datetime
 from sqlalchemy import create_engine
-import sys
 import time
 import numpy as np
 import argparse
@@ -13,10 +13,8 @@ yesterday = (datetime.datetime.now() - datetime.timedelta(days=1)).date()
 parser = argparse.ArgumentParser()
 parser.add_argument("--p", type=str, help="enter SQL password",
                     nargs='?', default=0, const=0)
-parser.add_argument("--m", type=str, help='upload date range up to yesterday',
-                    nargs='?', default=None, const=None)
 parser.add_argument("--s", type=str, help='set start date',
-                    nargs='?', default=yesterday, const=yesterday)
+                    nargs='?', default=None, const=None)
 args = parser.parse_args()
 
 database_username = 'root'
@@ -153,8 +151,8 @@ def date_check(tab, date):
         return 1
 
 
-def fill_missing_dates():
-    start = datetime.datetime.strptime(args.s, '%Y-%m-%d').date()
+def fill_missing_dates(s):
+    start = s
     end = yesterday
 
     all_dates = np.unique([date for date in daterange(start, end)])
@@ -189,12 +187,9 @@ if __name__ == '__main__':
                                  access_token=ACCESS_TOKEN,
                                  refresh_token=REFRESH_TOKEN)
 
-    if args.m == 'fill':
-        fill_missing_dates()
+
+    if args.s is not None:
+        fill_missing_dates(datetime.datetime.strptime(args.s, '%Y-%m-%d').date())
 
     else:
-        sleep()
-        hr()
-        water()
-        basicactivity()
-        hrzones()
+        fill_missing_dates(yesterday - datetime.timedelta(30))

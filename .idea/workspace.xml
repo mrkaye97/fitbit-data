@@ -2,9 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bc559fc7-6a0e-4876-a144-85647836baac" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data_pull.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_pull.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/make_plots.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gather_keys_oauth2.py" beforeDir="false" afterPath="$PROJECT_DIR$/gather_keys_oauth2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python-fitbit-master/gather_keys_oauth2.py" beforeDir="false" afterPath="$PROJECT_DIR$/python-fitbit-master/gather_keys_oauth2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viz/sleep/sleep_plots.Rmd" beforeDir="false" afterPath="$PROJECT_DIR$/viz/sleep/sleep_plots.Rmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viz/sleep/sleep_plots.html" beforeDir="false" afterPath="$PROJECT_DIR$/viz/sleep/sleep_plots.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viz/sleep/sleep_plots.nb.html" beforeDir="false" afterPath="$PROJECT_DIR$/viz/sleep/sleep_plots.nb.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,10 +22,52 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/data_pull.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="514">
-              <caret line="183" column="24" selection-start-line="183" selection-start-column="24" selection-end-line="183" selection-end-column="24" />
+            <state relative-caret-position="376">
+              <caret line="168" column="19" lean-forward="true" selection-start-line="168" selection-start-column="19" selection-end-line="168" selection-end-column="19" />
               <folding>
-                <element signature="e#0#13#0" expanded="true" />
+                <element signature="e#0#10#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/gather_keys_oauth2.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="223">
+              <caret line="18" column="22" lean-forward="true" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+              <folding>
+                <element signature="e#22#37#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Library/Python/3.7/lib/python/site-packages/fitbit/api.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="123">
+              <caret line="174" column="38" selection-start-line="174" selection-start-column="38" selection-end-line="174" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Library/Python/3.7/lib/python/site-packages/requests_oauthlib/oauth2_session.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="392">
+              <caret line="195" column="19" selection-start-line="195" selection-start-column="19" selection-end-line="195" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/python-fitbit-master/gather_keys_oauth2.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="123">
+              <caret line="60" column="29" selection-start-line="60" selection-start-column="29" selection-end-line="60" selection-end-column="29" />
+              <folding>
+                <element signature="e#22#37#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -31,8 +78,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="Jupyter Notebook" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -55,6 +102,9 @@
       <find>strp</find>
       <find>set</find>
       <find>fitbit</find>
+      <find>pd.</find>
+      <find>self.s</find>
+      <find>you are now</find>
     </findStrings>
     <replaceStrings>
       <replace>sleep</replace>
@@ -67,7 +117,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/gather_keys_oauth2.py" />
         <option value="$PROJECT_DIR$/fitbit.py" />
         <option value="$PROJECT_DIR$/python-fitbit-master/fitbit.py" />
         <option value="$PROJECT_DIR$/python-fitbit-master/test.py" />
@@ -77,13 +126,15 @@
         <option value="$PROJECT_DIR$/python-fitbit-master/fitbit/api.py" />
         <option value="$PROJECT_DIR$/make_plots.py" />
         <option value="$PROJECT_DIR$/plots.ipynb" />
+        <option value="$PROJECT_DIR$/__init__.py" />
         <option value="$PROJECT_DIR$/data_pull.py" />
+        <option value="$PROJECT_DIR$/python-fitbit-master/gather_keys_oauth2.py" />
+        <option value="$PROJECT_DIR$/gather_keys_oauth2.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="91" />
-    <option name="width" value="1349" />
+    <option name="width" value="869" />
     <option name="height" value="900" />
   </component>
   <component name="ProjectView">
@@ -91,7 +142,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -99,15 +149,11 @@
               <item name="fitbit" type="b2602c69:ProjectViewProjectNode" />
               <item name="fitbit" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="fitbit" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fitbit" type="462c0819:PsiDirectoryNode" />
-              <item name="python-fitbit-master" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -123,7 +169,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.notebooks.jupyter.connections.configuration.JupyterServerConfigurable" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -146,7 +192,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.make_plots">
+  <component name="RunManager" selected="Python.data_pull">
     <configuration name="create_cron" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="fitbit" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -183,7 +229,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data_pull.py" />
-      <option name="PARAMETERS" value="--p 1997SQLmrk! --m fill --s 2019-12-02" />
+      <option name="PARAMETERS" value="--p 1997SQLmrk!" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -280,18 +326,21 @@
       <workItem from="1579053266448" duration="571000" />
       <workItem from="1579117440468" duration="11000" />
       <workItem from="1579557997694" duration="518000" />
+      <workItem from="1585595704340" duration="609000" />
+      <workItem from="1586555648444" duration="910000" />
+      <workItem from="1588087270120" duration="568000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51250000" />
+    <option name="totallyTimeSpent" value="53337000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.27038628" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.28397712" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" order="0" />
       <window_info anchor="bottom" id="Terminal" order="1" weight="0.32941177" />
@@ -332,6 +381,16 @@
           <line>127</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/data_pull.py</url>
+          <line>194</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/data_pull.py</url>
+          <line>180</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -346,7 +405,7 @@
     <SUITE FILE_PATH="coverage/fitbit$hello.coverage" NAME="hello Coverage Results" MODIFIED="1575405393709" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/fitbit$fitbit.coverage" NAME="data_pull Coverage Results" MODIFIED="1575409084550" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/fitbit$make_plots.coverage" NAME="make_plots Coverage Results" MODIFIED="1576789763991" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/fitbit$data_pull.coverage" NAME="data_pull Coverage Results" MODIFIED="1576774052135" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/fitbit$data_pull.coverage" NAME="data_pull Coverage Results" MODIFIED="1588087495405" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/fitbit$create_cron.coverage" NAME="create_cron Coverage Results" MODIFIED="1575405814210" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="debuggerHistoryManager">
@@ -431,47 +490,47 @@ ax.yaxis.set_major_locator(HourLocator())</expression-string>
     </expressions>
     <expressions id="evaluateExpression">
       <expression>
+        <expression-string>yesterday - datetime.timedelta(30)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>yesterday - datetime.timedelta(39)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>yesterday</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>yesterday - 30</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>args.s</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>args</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>args.</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>args.__str__()</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
         <expression-string>auth2_client.sleep(date=date)['sleep']</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>x = auth2_client.sleep(date=date)['sleep'][0]</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>date = datetime.datetime.strptime('2019-12-16', '%Y-%m-%d').date()</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>date = datetime.datetime.strptime('2019-12-18', '%Y-%m-%d').date()</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>date = datetime.datetime.strptime('2019-12-18', '%Y-%m-%d')</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>date = datetime.datetime.strftime('2019-12-18', '%Y-%m-%d')</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>date = '2019-12-18'</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>datetime.datetime.strptime(args.s, '%Y-%m-%d').date()</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>datetime.datetime.strptime(args.s, '%Y-%m-%d')</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -515,15 +574,6 @@ ax.yaxis.set_major_locator(HourLocator())</expression-string>
     </entry>
     <entry file="file://$PROJECT_DIR$/create_cron.py" />
     <entry file="file://$PROJECT_DIR$/hello.py" />
-    <entry file="file://$PROJECT_DIR$/python-fitbit-master/gather_keys_oauth2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-62">
-          <folding>
-            <element signature="e#22#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/python-fitbit-master/docs/conf.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-4839" />
@@ -584,10 +634,29 @@ ax.yaxis.set_major_locator(HourLocator())</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gather_keys_oauth2.py">
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/codecs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
-          <caret line="43" column="53" selection-start-line="43" selection-start-column="53" selection-end-line="43" selection-end-column="53" />
+        <state relative-caret-position="663">
+          <caret line="311" selection-start-line="311" selection-end-line="311" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/make_plots.py" />
+    <entry file="file://$PROJECT_DIR$/plots.ipynb" />
+    <entry file="file://$PROJECT_DIR$/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Python/3.7/lib/python/site-packages/requests_oauthlib/oauth2_session.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="195" column="19" selection-start-line="195" selection-start-column="19" selection-end-line="195" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python-fitbit-master/gather_keys_oauth2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="60" column="29" selection-start-line="60" selection-start-column="29" selection-end-line="60" selection-end-column="29" />
           <folding>
             <element signature="e#22#37#0" expanded="true" />
           </folding>
@@ -596,40 +665,30 @@ ax.yaxis.set_major_locator(HourLocator())</expression-string>
     </entry>
     <entry file="file://$USER_HOME$/Library/Python/3.7/lib/python/site-packages/fitbit/api.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="347" selection-start-line="347" selection-end-line="347" />
+        <state relative-caret-position="123">
+          <caret line="174" column="38" selection-start-line="174" selection-start-column="38" selection-end-line="174" selection-end-column="38" />
         </state>
       </provider>
     </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/codecs.py">
+    <entry file="file://$PROJECT_DIR$/gather_keys_oauth2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="311" selection-start-line="311" selection-end-line="311" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/make_plots.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="50" />
+        <state relative-caret-position="223">
+          <caret line="18" column="22" lean-forward="true" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
           <folding>
-            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#22#37#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/data_pull.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="514">
-          <caret line="183" column="24" selection-start-line="183" selection-start-column="24" selection-end-line="183" selection-end-column="24" />
+        <state relative-caret-position="376">
+          <caret line="168" column="19" lean-forward="true" selection-start-line="168" selection-start-column="19" selection-end-line="168" selection-end-column="19" />
           <folding>
-            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plots.ipynb">
-      <provider selected="true" editor-type-id="jupyter-editor" />
     </entry>
   </component>
 </project>

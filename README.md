@@ -7,6 +7,10 @@ https://python-fitbit.readthedocs.io/en/latest/
 
 This repository contains two python files, data_pull.py and make_plots.py. data_pull.py hooks into the Fitbit API (with a given client ID and secret) and pulls Fitbit statistics. 
 
+## Plot Example:
+
+{{ readFile "viz/sleepplot.svg" | safeHTML }}
+
 ## Methods:
 
 **hr()** for minute-by-minute heart rate data, given a date
@@ -45,3 +49,5 @@ This project **not** runnable or useful (unless you want my Fitbit data) without
 --m (defaults to yesterday, specifying "fill" will allow you to fill a range of dates from a set start date to yesterday)
 
 --s (start date for fill in format %Y-%m-%d without quotation marks. Does not do anything if --m fill is not set.)
+
+

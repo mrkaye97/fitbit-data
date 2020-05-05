@@ -1,7 +1,7 @@
 ---
 title: "Fitbit-Tracked Sleep"
 output:
-  html_document:
+  html_notebook:
     df_print: paged
 ---
 ```{r, echo = F}
@@ -9,7 +9,7 @@ knitr::opts_chunk$set(message = F, warning = F, tidy = T)
 ```
 
 
-```{r setup, warning = F, message = F}
+```{r setup, warning = F, message = F, include = F}
 library(tidyverse)
 library(dbplyr)
 library(lubridate)
@@ -33,9 +33,9 @@ con <- DBI::dbConnect(RMySQL::MySQL(),
 
 ```{r wrangle}
 df <- tbl(con, 'sleep') %>%
-  data.frame() %>%
   arrange(date) %>%
   filter(mainSleep == 1) %>% # main sleep = no naps
+  collect() %>%
   mutate(date = as_datetime(date),
          startTime = as_datetime(startTime),
          sh = ifelse(hour(startTime) < 8, hour(startTime) + 24, hour(startTime)), #create numeric times
@@ -54,20 +54,52 @@ df %>%
 
 
 ```{r times, dev='svg', dpi=96}
-df %>%
-  ggplot(aes(x = date))+
-  geom_line(aes(y = et), color = 'coral', alpha = .3)+
-  geom_line(aes(y = st), color = 'dodgerblue', alpha = .3)+
-  geom_line(aes(y = met), color = 'coral', na.rm=T)+
-  geom_line(aes(y = mst), color = 'dodgerblue', na.rm=T)+
-  scale_y_continuous(breaks = seq(0, 30, 2),
-                     labels = trans_format(function(x) ifelse(x > 23, x - 24, x), 
-                                           format = scales::comma_format(suffix = ":00"))
-  )+
-  labs(x = "Date",
-       y = 'Time')+
-  theme_fivethirtyeight()
+(
+  plt <- df %>%
+    ggplot(aes(x = date))+
+    geom_line(aes(y = et), color = 'coral', alpha = .3)+
+    geom_line(aes(y = st), color = 'dodgerblue', alpha = .3)+
+    geom_line(aes(y = met), color = 'coral', na.rm=T)+
+    geom_line(aes(y = mst), color = 'dodgerblue', na.rm=T)+
+    scale_y_continuous(breaks = seq(0, 30, 2),
+                       labels = trans_format(function(x) ifelse(x > 23, x - 24, x), 
+                                             format = scales::comma_format(suffix = ":00"))
+    )+
+    labs(x = "Date",
+         y = 'Time')+
+    theme_fivethirtyeight()
+)
+
+ggsave('sleepplot.svg', plt, 'svg', dpi = 'retina', path = '~/Documents/GitHub/fitbit/viz', width = 6, height = 4.8)
+
 ```
 
+```{r}
+water <- con %>% 
+  tbl('water') %>% 
+  filter(water != 0) %>%
+  collect() %>%
+  mutate(date = as.Date(date))
+
+water %>% 
+  ggplot(aes(x = date))+
+  geom_line(aes(y = water), alpha = .3)+
+  geom_line(aes(y = ma(water, 7)))+
+  scale_x_date()
+```
+
+```{r}
+activity <- con %>%
+  tbl('basicactivity') %>%
+  collect() %>%
+  mutate(date = as.Date(date))
+
+df <- activity %>%
+  inner_join(water, by = 'date')
+
+df %>%
+  ggplot(aes(x = activityCalories, y = water))+
+  geom_point()
+```
 
 
