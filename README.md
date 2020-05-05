@@ -9,7 +9,7 @@ This repository contains two python files, data_pull.py and make_plots.py. data_
 
 ## Plot Example:
 
-![](users/matt/documents/github/fitbit/viz/sleepplot.svg)
+![Sleep Plot](https://raw.githubusercontent.com/mrkaye97/fitbit/master/viz/sleepplot.svg)
 
 ## Methods:
 
