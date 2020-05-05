@@ -1,26 +1,10 @@
----
-title: "Fitbit-Tracked Sleep"
-output:
-  html_notebook:
-    df_print: paged
----
-```{r, echo = F}
-knitr::opts_chunk$set(message = F, warning = F, tidy = T)
-```
-
-
-```{r setup, warning = F, message = F, include = F}
 library(tidyverse)
 library(dbplyr)
 library(lubridate)
 library(scales)
 library(ggthemes)
 library(forecast)
-```
 
-
-
-```{r connect}
 con <- DBI::dbConnect(RMySQL::MySQL(),    
                       host = "localhost",   
                       port = 3306,   
@@ -28,10 +12,6 @@ con <- DBI::dbConnect(RMySQL::MySQL(),
                       user = "root",   
                       password = keyring::key_get('mysql'))
 
-```
-
-
-```{r wrangle}
 df <- tbl(con, 'sleep') %>%
   arrange(date) %>%
   filter(mainSleep == 1) %>% # main sleep = no naps
@@ -46,16 +26,9 @@ df <- tbl(con, 'sleep') %>%
          et = eh + em/60,
          mst = ma(st, 7), #create moving averages
          met = ma(et, 7)
-         )
+  )
 
-df %>%
-  head()
-```
-
-
-```{r times, dev='svg', dpi=96}
-(
-  plt <- df %>%
+plt <- df %>%
     ggplot(aes(x = date))+
     geom_line(aes(y = et), color = 'coral', alpha = .3)+
     geom_line(aes(y = st), color = 'dodgerblue', alpha = .3)+
@@ -68,35 +41,5 @@ df %>%
     labs(x = "Date",
          y = 'Time')+
     theme_fivethirtyeight()
-)
-```
 
-```{r}
-water <- con %>% 
-  tbl('water') %>% 
-  filter(water != 0) %>%
-  collect() %>%
-  mutate(date = as.Date(date))
-
-water %>% 
-  ggplot(aes(x = date))+
-  geom_line(aes(y = water), alpha = .3)+
-  geom_line(aes(y = ma(water, 7)))+
-  scale_x_date()
-```
-
-```{r}
-activity <- con %>%
-  tbl('basicactivity') %>%
-  collect() %>%
-  mutate(date = as.Date(date))
-
-df <- activity %>%
-  inner_join(water, by = 'date')
-
-df %>%
-  ggplot(aes(x = activityCalories, y = water))+
-  geom_point()
-```
-
-
+ggsave('sleepplot.svg', plt, 'svg', dpi = 'retina', path = '~/Documents/GitHub/fitbit/viz', width = 6, height = 4.8)
