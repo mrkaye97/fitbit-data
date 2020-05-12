@@ -46,8 +46,6 @@ This project **not** runnable or useful (unless you want my Fitbit data) without
 
 --p YOUR_MYSQL_PASSWORD (mandatory)
 
---m (defaults to yesterday, specifying "fill" will allow you to fill a range of dates from a set start date to yesterday)
-
---s (start date for fill in format %Y-%m-%d without quotation marks. Does not do anything if --m fill is not set.)
+--s (start date for fill in format %Y-%m-%d without quotation marks. If not set, defaults to one week ago.)
 
 

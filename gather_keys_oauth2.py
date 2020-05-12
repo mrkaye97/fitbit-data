@@ -18,7 +18,8 @@ class OAuth2Server:
                    <script>window.close();</script>
                    """
         self.failure_html = """
-            <h1>ERROR: %s</h1><br/><h3>You can close this window</h3>%s"""
+                   <script>window.close();</script>
+                   """
 
         self.fitbit = Fitbit(
             client_id,
