@@ -36,7 +36,7 @@ plt <- df %>%
     geom_line(aes(y = mst), color = 'dodgerblue', na.rm=T)+
     scale_y_continuous(breaks = seq(0, 30, 2),
                        labels = trans_format(function(x) ifelse(x > 23, x - 24, x), 
-                                             format = scales::comma_format(suffix = ":00"))
+                                             format = scales::comma_format(suffix = ":00", accuracy = 1))
     )+
     labs(x = "Date",
          y = 'Time')+
