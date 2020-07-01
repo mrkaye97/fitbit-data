@@ -27,6 +27,10 @@ PROJECT_ROOT <- find_root('fitbit.Rproj')
 
 [Python Fitbit](https://python-fitbit.readthedocs.io/en/latest/)
 
+## Code:
+
+[Fitbit Github Repo](https://github.com/mrkaye97/Fitbit/)
+
 ## Description:
 
 This repository contains two python files, `data_pull.py` and `gather_keys_oauth2.py`. `data_pull.py` hooks into the Fitbit API (with a given client ID and secret) and pulls Fitbit statistics.
