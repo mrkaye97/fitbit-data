@@ -22,8 +22,6 @@ library(forecast)
 knitr::opts_chunk$set(echo = T, warning = F, message = F)
 ```
 
-***
-
 ## Full Documentation:
 
 [Python Fitbit](https://python-fitbit.readthedocs.io/en/latest/)
