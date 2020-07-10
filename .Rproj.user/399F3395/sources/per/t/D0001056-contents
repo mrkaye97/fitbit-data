@@ -1,0 +1,177 @@
+---
+title: "Collecting and Exploring Fitbit Data"
+output:
+  prettydoc::html_pretty:
+    theme: hpstr
+    highlight: github
+---
+
+```{r, include = F}
+rm(list = ls())
+
+library(tidyverse)
+library(lubridate)
+library(viridis)
+library(ggthemes)
+library(rprojroot)
+library(DBI)
+library(dbplyr)
+library(scales)
+library(forecast)
+
+knitr::opts_chunk$set(echo = T, warning = F, message = F)
+```
+
+## Full Documentation:
+
+[Python Fitbit](https://python-fitbit.readthedocs.io/en/latest/)
+
+***
+
+## Code:
+
+[Fitbit Github Repo](https://github.com/mrkaye97/Fitbit/)
+
+***
+
+## Description:
+
+This repository contains two python files, `data_pull.py` and `gather_keys_oauth2.py`. `data_pull.py` hooks into the Fitbit API (with a given client ID and secret) and pulls Fitbit statistics.
+
+The R files in `/viz/sleep/` and `/viz/activity/` visualize my Fitbit data.
+
+***
+
+## The Data:
+
+```{r setup}
+PROJECT_ROOT <- find_root('fitbit.Rproj')
+```
+
+
+```{r connect}
+con <- DBI::dbConnect(RMySQL::MySQL(),    
+                      host = "localhost",   
+                      port = 3306,   
+                      dbname = "fitbit",   
+                      user = "root",   
+                      password = keyring::key_get('mysql'))
+
+```
+
+
+```{r wrangle}
+activity <- tbl(con, 'basicactivity') %>%
+  data.frame() %>%
+  arrange(date) 
+
+water <- tbl(con, 'water') %>%
+  data.frame() %>%
+  arrange(date) 
+
+sleep <- tbl(con, 'sleep') %>%
+  data.frame() %>%
+  arrange(date) 
+
+df <- activity %>%
+  left_join(water, by = 'date') %>%
+  left_join(sleep, by = 'date')
+
+df %>%
+  glimpse()
+```
+
+***
+
+## Plot Example:
+
+```{r}
+df <- tbl(con, 'sleep') %>%
+  arrange(date) %>%
+  filter(mainSleep == 1) %>% # main sleep = no naps
+  collect() %>%
+  mutate(date = as_date(date),
+         startTime = as_datetime(startTime),
+         sh = ifelse(hour(startTime) < 8, hour(startTime) + 24, hour(startTime)), #create numeric times
+         sm = minute(startTime),
+         st = sh + sm/60,
+         eh = hour(endTime),
+         em = minute(endTime),
+         et = eh + em/60,
+         mst = ma(st, 7), #create moving averages
+         met = ma(et, 7),
+         year = year(startTime)
+  )
+
+plt <- df %>%
+    ggplot(aes(x = date))+
+    geom_line(aes(y = et), color = 'coral', alpha = .3, na.rm = T)+
+    geom_line(aes(y = st), color = 'dodgerblue', alpha = .3, na.rm = T)+
+    geom_line(aes(y = met), color = 'coral', na.rm=T)+
+    geom_line(aes(y = mst), color = 'dodgerblue', na.rm=T)+
+    scale_y_continuous(breaks = seq(0, 30, 2),
+                       labels = trans_format(function(x) ifelse(x > 23, x - 24, x), 
+                                             format = scales::comma_format(suffix = ":00", accuracy = 1))
+    )+
+    labs(x = "Date",
+         y = 'Time')+
+    theme_fivethirtyeight()+
+  scale_x_date(date_breaks = '1 month', date_labels = '%b', expand = c(0, 0))+
+  facet_grid(. ~ year, space = 'free', scales = 'free_x', switch = 'x') +
+  theme(panel.spacing.x = unit(0,"line"), 
+        strip.placement = "outside")
+```
+<center>
+```{r, echo = F}
+plt
+```
+</center>
+
+***
+
+## Methods:
+
+**hr()** for minute-by-minute heart rate data, given a date
+
+**sleep()** for all sleep logs, including time slept, start and end times, nap / main sleep, restless count, etc., given a date
+
+**water()** for how much water was logged, given a date
+
+**basicactivity()** for data on steps, active minutes, sedentary minutes, etc., given a date
+
+**hrzones()** for data on how long was spent in each heart rate zone (peak, cardio, fat burn, other), given a date
+
+**fill_missing_data()** will call all five above methods for a specified date range, and is meant to be run if the program doesn't execute on some day or set of days
+
+**date_check()** ensures no duplicates in the database
+
+**daterange()** is a helper method to yield a range of dates (analogous to the range() function, but for dates)
+
+
+All date parameters for each method defaults to the previous day. All methods (except for daterange() and date_check()) do not return. If date_check() returns -1, then the method that called it returns None and nothing is uploaded to the SQL database. Otherwise, new rows are appended to a SQL table in database fitbit with the specified name.
+
+***
+
+## Setup and Use:
+
+This project **not** runnable or useful (unless you want my Fitbit data) without registering an application with the Fitbit API and getting your own client ID and secret. Steps to get set up:
+
+1. First, [**go here**](https://towardsdatascience.com/collect-your-own-fitbit-data-with-python-ff145fa10873) and follow the instructions to authorize yourself to use the API.
+2. **SAVE YOUR CLIENT ID AND CLIENT SECRET!** You'll need them in the next step.
+3. Then, in data_pull.py, change the database parameters (username, ip, name) to whatever mySQL database you want to use for storing the data. Keep in mind that the tables in the database **MUST** have the same names as mine.
+4. Change the CLIENT_ID and CLIENT_SECRET to your newly saved ones (from when you authorized yourself with the API)
+5. Run data_pull.py and give it a test run!
+
+***
+
+## Command Line Arguments:
+
+--p YOUR_MYSQL_PASSWORD (mandatory)
+
+--s (start date for fill in format %Y-%m-%d without quotation marks. If not set, defaults to one week ago.)
+
+
+```{bash, include = F}
+rm index.html
+ln -s index.nb.html index.html
+```
