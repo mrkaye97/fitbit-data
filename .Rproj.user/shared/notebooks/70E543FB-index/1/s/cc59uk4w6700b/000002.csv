@@ -1,7 +1,0 @@
-"0","con <- DBI::dbConnect(RMySQL::MySQL(),    "
-"0","                      host = ""localhost"",   "
-"0","                      port = 3306,   "
-"0","                      dbname = ""fitbit"",   "
-"0","                      user = ""root"",   "
-"0","                      password = keyring::key_get('mysql'))"
-"0",""

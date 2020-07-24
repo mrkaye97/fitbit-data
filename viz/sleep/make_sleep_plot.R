@@ -47,4 +47,4 @@ plt <- df %>%
   theme(panel.spacing.x = unit(0,"line"), 
         strip.placement = "outside")
 
-ggsave('sleepplot.svg', plt, 'svg', dpi = 'retina', path = '~/Documents/GitHub/fitbit/viz', width = 6, height = 4.8)
+ggsave('sleepplot.svg', plt, 'svg', dpi = 'retina', path = '~/Google Drive/GitHub/fitbit/viz', width = 6, height = 4.8)
