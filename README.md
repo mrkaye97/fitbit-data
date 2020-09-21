@@ -38,14 +38,17 @@ This project **not** runnable or useful (unless you want my Fitbit data) without
 
 1. First, [**go here**](https://towardsdatascience.com/collect-your-own-fitbit-data-with-python-ff145fa10873) and follow the instructions to authorize yourself to use the API.
 2. **SAVE YOUR CLIENT ID AND CLIENT SECRET!** You'll need them in the next step.
-3. Then, in data_pull.py, change the database parameters (username, ip, name) to whatever mySQL database you want to use for storing the data. Keep in mind that the tables in the database **MUST** have the same names as mine.
-4. Change the CLIENT_ID and CLIENT_SECRET to your newly saved ones (from when you authorized yourself with the API)
-5. Run data_pull.py and give it a test run!
+3. Then, in data_pull.py, change the database parameters (username, ip, name) to whatever PostreSQL database you want to use for storing the data if you don't want to use localhost.
+4. Run data_pull.py and give it a test run!
 
 ## Command Line Arguments:
 
 --p YOUR_MYSQL_PASSWORD (mandatory)
 
 --s (start date for fill in format %Y-%m-%d without quotation marks. If not set, defaults to one week ago.)
+
+--id YOUR_CLIENT_ID (from step 2) -- code will fail without a client ID
+
+--sec YOUR_CLIENT_SECRET (from step 2) -- code will fail without a secret
 
 
