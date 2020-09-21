@@ -1,4 +1,3 @@
-import sys
 import fitbit
 import gather_keys_oauth2 as Oauth2
 import pandas as pd
@@ -15,21 +14,25 @@ parser.add_argument("--p", type=str, help="enter SQL password",
                     nargs='?', default=0, const=0)
 parser.add_argument("--s", type=str, help='set start date',
                     nargs='?', default=None, const=None)
+parser.add_argument("--id", type=str, help='set client id',
+                    nargs='?', default=None, const=None)
+parser.add_argument("--sec", type=str, help='set client secret',
+                    nargs='?', default=None, const=None)
 args = parser.parse_args()
 
-database_username = 'root'
+database_username = 'matt'
 database_password = args.p  # db password as command line arg
-database_ip = 'localhost:3306'
+database_ip = 'localhost'
 database_name = 'fitbit'
 
-engine = create_engine('mysql+pymysql://{}:{}@{}/{}'.format(database_username,
-                                                            database_password,
-                                                            database_ip,
-                                                            database_name),
+engine = create_engine('postgresql+pg8000://{}:{}@{}/{}'.format(database_username,
+                                                                database_password,
+                                                                database_ip,
+                                                                database_name),
                        echo=False)
 
-CLIENT_ID = "22B8T7"
-CLIENT_SECRET = "05645289a684308b40e5cef4a002223e"
+CLIENT_ID = args.id
+CLIENT_SECRET = args.sec
 
 def hr(date = yesterday):
     if date_check('heartrate', date) == -1:
@@ -141,8 +144,11 @@ def daterange(start_date, end_date):
 
 
 def date_check(tab, date):
-    temp = pd.read_sql_table(tab, con=engine)
-    temp.columns = map(str.lower, temp.columns)
+    try:
+        temp = pd.read_sql_table(tab, con=engine)
+        temp.columns = map(str.lower, temp.columns)
+    except ValueError:
+        return None
 
     if date in np.unique(temp['date'].dt.date):
         print("Data from {} in database {} already exists".format(date, tab))
@@ -156,7 +162,11 @@ def fill_missing_dates(s):
     end = yesterday
 
     all_dates = np.unique([date for date in daterange(start, end)])
-    dates_exist = np.unique(pd.read_sql_table('sleep', con=engine)['date'].dt.date)
+
+    try:
+        dates_exist = np.unique(pd.read_sql_table('sleep', con=engine)['date'].dt.date)
+    except ValueError:
+        dates_exist = None
 
     diff = np.setdiff1d(all_dates, dates_exist)
     i = 0
