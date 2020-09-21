@@ -186,6 +186,13 @@ def fill_missing_dates(s):
         i += 1
 
 
+def check_for_db():
+    try:
+        engine.connect()
+    except:
+        engine.execution_options(isolation_level="AUTOCOMMIT").execute("CREATE DATABASE fitbit")
+
+
 if __name__ == '__main__':
     server = Oauth2.OAuth2Server(CLIENT_ID, CLIENT_SECRET)
     server.browser_authorize()
@@ -197,6 +204,7 @@ if __name__ == '__main__':
                                  access_token=ACCESS_TOKEN,
                                  refresh_token=REFRESH_TOKEN)
 
+    check_for_db()
 
     if args.s is not None:
         fill_missing_dates(datetime.datetime.strptime(args.s, '%Y-%m-%d').date())
