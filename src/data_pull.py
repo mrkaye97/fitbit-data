@@ -145,16 +145,25 @@ def daterange(start_date, end_date):
 
 def date_check(tab, date):
     try:
-        temp = pd.read_sql_table(tab, con=engine)
-        temp.columns = map(str.lower, temp.columns)
+        temp = set(pd.read_sql_query(" ".join(["select distinct date from", str(tab)]), engine)['date'])
     except ValueError:
         return None
 
-    if date in np.unique(temp['date'].dt.date):
+    if date in temp:
         print("Data from {} in database {} already exists".format(date, tab))
         return -1
     else:
         return 1
+
+
+def tryfunc(fn, date):
+    try:
+        fn(date)
+    except:
+        print("Got an exception trying to pull data from the Fitbit API. Waiting for 60 seconds")
+        time.sleep(60)
+        print("Trying again")
+        tryfunc(fn, date)
 
 
 def fill_missing_dates(s):
@@ -163,21 +172,19 @@ def fill_missing_dates(s):
 
     all_dates = np.unique([date for date in daterange(start, end)])
 
-    i = 0
-
     for date in all_dates:
-        if i == 30:
-            print(datetime.datetime.now().strftime("%H:%M:%S"))
-            time.sleep(3600)
+
+        funcs = [
+            sleep,
+            hr,
+            water,
+            basicactivity,
+            hrzones
+        ]
 
         print(date)
-        sleep(date)
-        hr(date)
-        water(date)
-        basicactivity(date)
-        hrzones(date)
+        [tryfunc(f, date) for f in funcs]
 
-        i += 1
 
 
 def check_for_db():
