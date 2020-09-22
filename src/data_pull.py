@@ -5,6 +5,7 @@ import datetime
 from sqlalchemy import create_engine
 import numpy as np
 import argparse
+import time
 
 yesterday = (datetime.datetime.now() - datetime.timedelta(days=1)).date()
 
@@ -167,7 +168,7 @@ def fill_missing_dates(s):
     for date in all_dates:
         if i == 30:
             print(datetime.datetime.now().strftime("%H:%M:%S"))
-            # time.sleep(3600)
+            time.sleep(3600)
 
         print(date)
         sleep(date)
