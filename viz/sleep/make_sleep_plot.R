@@ -4,6 +4,7 @@ library(lubridate)
 library(scales)
 library(ggthemes)
 library(RPostgres)
+library(forecast)
 
 rm(list = ls())
 
