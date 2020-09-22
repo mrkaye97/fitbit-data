@@ -3,21 +3,22 @@ library(dbplyr)
 library(lubridate)
 library(scales)
 library(ggthemes)
-library(forecast)
+library(RPostgres)
 
-con <- DBI::dbConnect(RMySQL::MySQL(),    
+rm(list = ls())
+
+con <- DBI::dbConnect(RPostgres::Postgres(),    
                       host = "localhost",   
-                      port = 3306,   
                       dbname = "fitbit",   
-                      user = "root",   
-                      password = keyring::key_get('mysql'))
+                      user = "matt")
 
 df <- tbl(con, 'sleep') %>%
   arrange(date) %>%
-  filter(mainSleep == 1) %>% # main sleep = no naps
+  filter(mainSleep == T) %>% # main sleep = no naps
   collect() %>%
   mutate(date = as_date(date),
          startTime = as_datetime(startTime),
+         endTime = as_datetime(endTime),
          sh = ifelse(hour(startTime) < 8, hour(startTime) + 24, hour(startTime)), #create numeric times
          sm = minute(startTime),
          st = sh + sm/60,

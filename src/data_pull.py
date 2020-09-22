@@ -3,7 +3,6 @@ from src import gather_keys_oauth2 as Oauth2
 import pandas as pd
 import datetime
 from sqlalchemy import create_engine
-import time
 import numpy as np
 import argparse
 
@@ -163,18 +162,12 @@ def fill_missing_dates(s):
 
     all_dates = np.unique([date for date in daterange(start, end)])
 
-    try:
-        dates_exist = np.unique(pd.read_sql_table('sleep', con=engine)['date'].dt.date)
-    except ValueError:
-        dates_exist = None
-
-    diff = np.setdiff1d(all_dates, dates_exist)
     i = 0
 
-    for date in diff:
+    for date in all_dates:
         if i == 30:
             print(datetime.datetime.now().strftime("%H:%M:%S"))
-            time.sleep(3600)
+            # time.sleep(3600)
 
         print(date)
         sleep(date)
