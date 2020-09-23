@@ -23,7 +23,7 @@ args = parser.parse_args()
 database_username = 'matt'
 database_password = args.p  # db password as command line arg
 database_ip = 'localhost'
-database_name = 'fitbit'
+database_name = 'vmfitbit'
 
 engine = create_engine('postgresql+pg8000://{}:{}@{}/{}'.format(database_username,
                                                                 database_password,
@@ -56,30 +56,27 @@ def sleep(date=yesterday):
     if date_check('sleep', date) == -1:
         return None
 
-    try:
-        for x in auth2_client.sleep(date=date)['sleep']:
+    for x in auth2_client.sleep(date=date)['sleep']:
 
-            (pd
-             .DataFrame({'date': pd.to_datetime(x['dateOfSleep']).date(),
-                         'mainSleep': x['isMainSleep'],
-                         'startTime': x['startTime'],
-                         'endTime': x['endTime'],
-                         'minutesAsleep': x['minutesAsleep'],
-                         'minutesAwake': x['minutesAwake'],
-                         'awakenings': x['awakeCount'],
-                         'restlessCount': x['restlessCount'],
-                         'restlessDuration': x['restlessDuration'],
-                         'timeInBed': x['timeInBed'],
-                         'efficiency': x['efficiency']
-                         }, index=[0])
-             .to_sql('sleep',
-                     con=engine,
-                     if_exists='append',
-                     index=False)
-             )
+        (pd
+         .DataFrame({'date': pd.to_datetime(x['dateOfSleep']).date(),
+                     'mainSleep': x['isMainSleep'],
+                     'startTime': x['startTime'],
+                     'endTime': x['endTime'],
+                     'minutesAsleep': x['minutesAsleep'],
+                     'minutesAwake': x['minutesAwake'],
+                     'awakenings': x['awakeCount'],
+                     'restlessCount': x['restlessCount'],
+                     'restlessDuration': x['restlessDuration'],
+                     'timeInBed': x['timeInBed'],
+                     'efficiency': x['efficiency']
+                     }, index=[0])
+         .to_sql('sleep',
+                 con=engine,
+                 if_exists='append',
+                 index=False)
+         )
 
-    except:
-        pass
 
 
 def water(date=yesterday):
@@ -105,16 +102,16 @@ def basicactivity(date=yesterday):
     activity = auth2_client.activities(date=date)['summary']
 
     (pd.DataFrame({'date': date,
-                   'activityCalories': activity['activityCalories'],
-                   'caloriesBMR': activity['caloriesBMR'],
-                   'caloriesOut': activity['caloriesOut'],
-                   'marginalCalories': activity['marginalCalories'],
-                   'sedentaryMinutes': activity['sedentaryMinutes'],
-                   'lightlyActiveMinutes': activity['lightlyActiveMinutes'],
-                   'fairlyActiveMinutes': activity['fairlyActiveMinutes'],
-                   'veryActiveMinutes': activity['veryActiveMinutes'],
-                   'restingHeartRate': activity['restingHeartRate'],
-                   'steps': activity['steps']
+                   'activityCalories': activity['activityCalories'] if 'activityCalories' in activity.keys() else None,
+                   'caloriesBMR': activity['caloriesBMR'] if 'caloriesBMR' in activity.keys() else None,
+                   'caloriesOut': activity['caloriesOut'] if 'caloriesOut' in activity.keys() else None,
+                   'marginalCalories': activity['marginalCalories'] if 'marginalCalories' in activity.keys() else None,
+                   'sedentaryMinutes': activity['sedentaryMinutes'] if 'sedentaryMinutes' in activity.keys() else None,
+                   'lightlyActiveMinutes': activity['lightlyActiveMinutes'] if 'lightlyActiveMinutes' in activity.keys() else None,
+                   'fairlyActiveMinutes': activity['fairlyActiveMinutes'] if 'fairlyActiveMinutes' in activity.keys() else None,
+                   'veryActiveMinutes': activity['veryActiveMinutes'] if 'veryActiveMinutes' in activity.keys() else None,
+                   'restingHeartRate': activity['restingHeartRate'] if 'restingHeartRate' in activity.keys() else None,
+                   'steps': activity['steps'] if 'steps' in activity.keys() else None
                    }, index=[0])
      .to_sql('basicactivity',
              con=engine,
@@ -127,16 +124,19 @@ def hrzones(date=yesterday):
     if date_check('hrzones', date) == -1:
         return None
 
-    (pd
-     .DataFrame(auth2_client.activities(date=date)['summary']['heartRateZones'])
-     .assign(date=date)
-     .filter(['date', 'name', 'min', 'max', 'minutes', 'caloriesOut'])
-     .to_sql(name='hrzones',
-             con=engine,
-             if_exists='append',
-             index=False)
-     )
-
+    activity = auth2_client.activities(date=date)['summary']
+    if 'heartRateZones' in activity.keys():
+        (pd
+         .DataFrame(activity['heartRateZones'])
+         .assign(date=date)
+         .filter(['date', 'name', 'min', 'max', 'minutes', 'caloriesOut'])
+         .to_sql(name='hrzones',
+                 con=engine,
+                 if_exists='append',
+                 index=False)
+         )
+    else:
+        pass
 
 def daterange(start_date, end_date):
     for n in range(int((end_date - start_date).days) + 1):
@@ -144,10 +144,11 @@ def daterange(start_date, end_date):
 
 
 def date_check(tab, date):
-    try:
+
+    if not engine.dialect.has_table(engine, tab):
+        return 1
+    else:
         temp = set(pd.read_sql_query(" ".join(["select distinct date from", str(tab)]), engine)['date'])
-    except ValueError:
-        return None
 
     if date in temp:
         print("Data from {} in database {} already exists".format(date, tab))
@@ -159,8 +160,8 @@ def date_check(tab, date):
 def tryfunc(fn, date):
     try:
         fn(date)
-    except:
-        print("Got an exception trying to pull data from the Fitbit API. Waiting for 60 seconds")
+    except fitbit.exceptions.HTTPTooManyRequests:
+        print("Too many requests from Fitbit API. Waiting for 60 seconds")
         time.sleep(60)
         print("Trying again")
         tryfunc(fn, date)
