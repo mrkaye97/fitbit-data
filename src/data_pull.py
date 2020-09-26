@@ -1,11 +1,11 @@
 import fitbit
 import gather_keys_oauth2 as Oauth2
 import pandas as pd
-import datetime
 from sqlalchemy import create_engine
 import numpy as np
 import argparse
 import time
+import datetime
 
 yesterday = (datetime.datetime.now() - datetime.timedelta(days=1)).date()
 
@@ -23,7 +23,7 @@ args = parser.parse_args()
 database_username = 'matt'
 database_password = args.p  # db password as command line arg
 database_ip = 'localhost'
-database_name = 'vmfitbit'
+database_name = 'fitbit'
 
 engine = create_engine('postgresql+pg8000://{}:{}@{}/{}'.format(database_username,
                                                                 database_password,
@@ -161,7 +161,7 @@ def tryfunc(fn, date):
     try:
         fn(date)
     except fitbit.exceptions.HTTPTooManyRequests:
-        print("Too many requests from Fitbit API. Waiting for 60 seconds")
+        print("Too many requests from Fitbit API. Waiting for 1 minute starting at " + str(datetime.datetime.now()))
         time.sleep(60)
         print("Trying again")
         tryfunc(fn, date)
@@ -212,4 +212,4 @@ if __name__ == '__main__':
         fill_missing_dates(datetime.datetime.strptime(args.s, '%Y-%m-%d').date())
 
     else:
-        fill_missing_dates(yesterday - datetime.timedelta(30))
+        fill_missing_dates(yesterday - datetime.timedelta(7))
