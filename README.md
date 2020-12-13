@@ -43,7 +43,7 @@ This project **not** runnable or useful (unless you want my Fitbit data) without
 
 ## Command Line Arguments:
 
---p YOUR_MYSQL_PASSWORD (mandatory)
+--p YOUR_POSTGRES_PASSWORD (mandatory)
 
 --s (start date for fill in format %Y-%m-%d without quotation marks. If not set, defaults to one week ago.)
 
