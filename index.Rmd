@@ -121,7 +121,7 @@ plt <- df %>%
         strip.placement = "outside")
 ```
 <center>
-```{r, echo = F}
+```{r, echo = F, fig.width=10, dev = 'svg'}
 plt
 ```
 </center>
